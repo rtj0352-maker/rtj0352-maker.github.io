@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lyu DongRui — Portfolio</title>
+<meta name="description" content="Portfolio of Lyu DongRui (呂 東瑞): independent web projects — DevToolPick, TESSERA and more.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#0a0a0a;--mid:#6b6b6b;--line:#d4d4d4;--bg:#f2f2f2;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue",Helvetica,Arial,"PingFang SC","Noto Sans CJK SC","Hiragino Sans",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.sheet{background:var(--card);max-width:1240px;margin:24px auto 0;border-radius:4px}
+.up{text-transform:uppercase;letter-spacing:.06em}
+.small{font-size:12px}
+.grad{background:linear-gradient(90deg,#9a9a9a 0%,#0a0a0a 30%,#0a0a0a 65%,#8a8a8a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* nav */
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 28px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);z-index:10}
+.logo{font-size:15px;letter-spacing:.08em}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--ink);border-radius:999px;padding:7px 16px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.pill:hover,.pill.on{background:var(--ink);color:#fff}
+.pill.dark{background:var(--ink);color:#fff}.pill.dark:hover{background:#fff;color:var(--ink)}
+.circ{width:56px;height:56px;border:1px solid var(--ink);border-radius:50%;display:inline-grid;place-items:center;transition:transform .35s,background .25s,color .25s;flex:none}
+.circ svg{width:20px;height:20px}
+.circ:hover{background:var(--ink);color:#fff;transform:rotate(-45deg)}
+.circ.sm{width:42px;height:42px}
+/* hero */
+.hero{padding:56px 0 40px;position:relative}
+.hero h1{font-weight:300;font-size:clamp(48px,11vw,150px);line-height:.95;letter-spacing:-.01em;text-align:center;font-stretch:expanded;text-transform:uppercase}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(240px,380px) 1fr;gap:24px;margin-top:-40px;align-items:start}
+.portrait{position:relative;z-index:-0;aspect-ratio:5/6;filter:grayscale(1)}
+.portrait img{width:100%;height:100%;object-fit:contain;display:block}
+.portrait .tag{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:#fff;border:1px dashed var(--mid);border-radius:999px;padding:3px 10px;font-size:10px;color:var(--mid);white-space:nowrap}
+.hero-left{padding-top:90px;display:flex;flex-direction:column;gap:28px}
+.hero-right{padding-top:90px;text-align:right;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.hero-right p{max-width:240px;font-size:13px}
+.hero-right ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px;font-size:13px}
+/* sections */
+section{padding:72px 0}
+.h2{font-weight:300;font-size:clamp(40px,7vw,88px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
+.about-head{display:flex;gap:40px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.about-head .t{display:flex;align-items:flex-end;gap:6px}
+.about-head p{max-width:420px;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:48px}
+.stats div{padding:34px 30px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-weight:300;font-size:clamp(28px,4vw,44px)}
+.stats span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mid)}
+.center{text-align:center}
+.tabbar{display:flex;justify-content:space-between;align-items:center;margin:36px 0 28px;gap:12px;flex-wrap:wrap}
+.tabbar .pill{padding:12px 26px;font-size:14px}
+.works{display:grid;gap:28px}
+.work{display:grid;grid-template-columns:1.3fr 1fr;gap:0;border:1px solid var(--line);background:#fff;transition:transform .4s,box-shadow .4s}
+.work:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35)}
+.work .shot{overflow:hidden;background:#eee;aspect-ratio:16/10}
+.work .shot img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1);transition:filter .6s,transform .8s}
+.work:hover .shot img{filter:grayscale(0);transform:scale(1.03)}
+.work .body{padding:34px;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line)}
+.num{font-size:12px;color:var(--mid);letter-spacing:.1em}
+.work h3{font-weight:300;font-size:clamp(30px,3.6vw,46px);text-transform:uppercase;line-height:1}
+.work p{font-size:14px;color:#333}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.dot.hollow{background:transparent;border:1px solid var(--ink)}
+.dot.live{animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,0,0,.4)}70%{box-shadow:0 0 0 8px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
+.work .act{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.work.tbd{border-style:dashed}
+.pill[aria-disabled=true]{opacity:.45;pointer-events:none}
+.work.hide{display:none}
+/* list */
+.list{list-style:none;display:flex;flex-direction:column;gap:10px;max-width:760px;margin:40px auto 0}
+.list li{display:grid;grid-template-columns:44px 1fr 44px;gap:10px;align-items:center}
+.list .n,.list .a{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:13px}
+.list .m{border:1px solid var(--line);border-radius:999px;padding:12px 22px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;text-align:center;transition:background .3s,color .3s}
+.list li:hover .m,.list li.on .m,.list li:hover .n,.list li.on .n,.list li:hover .a,.list li.on .a{background:var(--ink);color:#fff;border-color:var(--ink)}
+.list small{display:block;text-transform:none;letter-spacing:0;font-size:12px;opacity:.7}
+/* footer */
+footer{background:var(--ink);color:#fff;max-width:1240px;margin:0 auto 24px;padding:80px 28px 28px;border-radius:0 0 4px 4px}
+footer h2{font-weight:300;font-size:clamp(56px,13vw,170px);line-height:.9;text-align:center;text-transform:uppercase;background:linear-gradient(90deg,#777,#fff 35%,#fff 65%,#888);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer .pills{justify-content:center;margin-top:36px}
+footer .pill{border-color:#fff;color:#fff}
+footer .pill:hover{background:#fff;color:var(--ink)}
+footer .bot{display:flex;justify-content:space-between;margin-top:70px;font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;flex-wrap:wrap;gap:8px}
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+/* i18n */
+html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
+@media (max-width:860px){
+ header{flex-wrap:wrap;padding:16px 20px}.navlinks{display:none}
+ .hero-grid{grid-template-columns:1fr;margin-top:10px}
+ .hero-left,.hero-right{padding-top:0;align-items:flex-start;text-align:left}
+ .hero-left{order:2;flex-direction:row;align-items:center;justify-content:space-between}
+ .portrait{order:1;max-width:300px;margin:0 auto;width:100%}
+ .hero-right{order:3}.hero-right ul{margin-top:8px;flex-direction:row;flex-wrap:wrap;gap:8px}
+ .hero-right ul li{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:11px}
+ .work{grid-template-columns:1fr}.work .body{border-left:0;border-top:1px solid var(--line);padding:24px}
+ .stats div{padding:22px 14px}
+ section{padding:52px 0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body class="no-js">
+<div class="sheet">
+<header>
+ <a href="#top" class="logo up">Lyu DongRui<span style="color:var(--mid)">.</span></a>
+ <nav class="pills navlinks" aria-label="Main">
+  <a class="pill" href="#top"><span lang="en">Home</span><span lang="zh">首页</span></a>
+  <a class="pill" href="#about"><span lang="en">About</span><span lang="zh">关于</span></a>
+  <a class="pill" href="#projects"><span lang="en">Projects</span><span lang="zh">作品</span></a>
+  <a class="pill" href="#now"><span lang="en">Now</span><span lang="zh">在做</span></a>
+ </nav>
+ <div class="pills">
+  <a class="pill" href="https://github.com/rtj0352-maker" target="_blank" rel="noopener">GitHub</a>
+  <button class="pill" id="lang" type="button" aria-label="Switch language">中文 / EN</button>
+ </div>
+</header>
+
+<main id="top" class="wrap">
+ <div class="hero">
+  <h1 class="grad rv"><span lang="en">Explore my<br>portfolio</span><span lang="zh">Explore my<br>portfolio</span></h1>
+  <div class="hero-grid">
+   <div class="hero-left rv">
+    <span class="small up">呂 東瑞 · <span lang="en">Builder est.2026</span><span lang="zh">独立开发 · 2026 起</span></span>
+    <a class="circ" href="#projects" aria-label="See projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 8v10H8"/></svg></a>
+   </div>
+   <!-- PORTRAIT: replace assets/portrait-placeholder.svg with a cut-out B&W PNG (transparent bg), e.g. assets/portrait.png -->
+   <div class="portrait rv">
+    <img src="assets/portrait-placeholder.svg" alt="Portrait of Lyu DongRui (placeholder)" width="400" height="480">
+    <span class="tag">PHOTO PLACEHOLDER</span>
+   </div>
+   <div class="hero-right rv">
+    <p class="up"><span lang="en">I design and ship independent websites — content, tools and learning products.</span><span lang="zh">我独立设计并上线网站：内容站、工具和学习产品。</span></p>
+    <ul class="up">
+     <li><span lang="en">Web products</span><span lang="zh">网站产品</span></li>
+     <li><span lang="en">Content &amp; SEO</span><span lang="zh">内容与 SEO</span></li>
+     <li><span lang="en">Front-end motion</span><span lang="zh">前端动效</span></li>
+     <li><span lang="en">EN / JA / ZH</span><span lang="zh">中 / 英 / 日</span></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <section id="about">
+  <div class="about-head rv">
+   <div class="t"><h2 class="h2 grad"><span lang="en">About</span><span lang="zh">About</span></h2><a class="circ sm" href="#now" aria-label="Now"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+   <!-- BIO: edit this text -->
+   <p><span lang="en">"Lyu DongRui is an independent builder based in Tokyo, shipping multilingual web products from idea to launch." [bio placeholder — edit me]</span><span lang="zh">「呂 東瑞，坐标东京的独立开发者，从想法到上线独立完成多语言网站产品。」[简介占位，待修改]</span></p>
+  </div>
+  <div class="stats rv">
+   <div><b>3</b><span lang="en">Projects</span><span lang="zh">个作品</span></div>
+   <div><b>EN/JA/ZH</b><span lang="en">Languages</span><span lang="zh">语言</span></div>
+   <div><b>2026</b><span lang="en">Building since</span><span lang="zh">开始年份</span></div>
+  </div>
+ </section>
+
+ <section id="projects">
+  <h2 class="h2 grad center rv"><span lang="en">Featured project</span><span lang="zh">Featured project</span></h2>
+  <div class="tabbar rv">
+   <div class="pills" role="tablist">
+    <button class="pill on" data-f="all" type="button"><span lang="en">All</span><span lang="zh">全部</span></button>
+    <button class="pill" data-f="live" type="button"><span lang="en">Live</span><span lang="zh">已上线</span></button>
+    <button class="pill" data-f="soon" type="button"><span lang="en">In progress</span><span lang="zh">进行中</span></button>
+   </div>
+   <a class="circ" href="https://github.com/rtj0352-maker" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+  </div>
+  <div class="works">
+   <article class="work rv" data-s="live">
+    <a class="shot" href="https://rtj0352-maker.github.io/devtoolpick/" target="_blank" rel="noopener"><img src="assets/devtoolpick.jpg" alt="DevToolPick homepage screenshot" width="1200" height="750" loading="lazy"></a>
+    <div class="body">
+     <span class="num">01</span>
+     <h3>DevToolPick</h3>
+     <p><span lang="en">Bilingual review site for AI coding &amp; productivity tools — quiz finder, comparison filter, pricing calculator and news.</span><span lang="zh">中英日 AI 工具测评站：推荐测验、对比筛选、价格计算器和技术新闻。</span></p>
+     <div class="chips"><span class="chip">Astro</span><span class="chip">GitHub Pages</span><span class="chip">EN + JA</span><span class="chip">SEO</span></div>
+     <div class="act"><span class="status"><span class="dot live"></span><span lang="en">Live</span><span lang="zh">已上线</span></span><a class="pill dark" href="https://rtj0352-maker.github.io/devtoolpick/" target="_blank" rel="noopener"><span lang="en">Visit</span><span lang="zh">访问</span> ↗</a></div>
+    </div>
+   </article>
+   <article class="work rv" data-s="soon">
+    <div class="shot"><img src="assets/tessera-placeholder.svg" alt="TESSERA placeholder" width="1200" height="750" loading="lazy"></div>
+    <div class="body">
+     <span class="num">02</span>
+     <h3>Tessera</h3>
+     <p><span lang="en">A TOEFL preparation site — focused practice, clean study flow. Currently being polished.</span><span lang="zh">托福备考网站，专注练习与清爽的学习流程，正在打磨中。</span></p>
+     <div class="chips"><span class="chip">Web app</span><span class="chip">TOEFL</span><span class="chip">Education</span></div>
+     <div class="act"><span class="status"><span class="dot hollow"></span><span lang="en">Coming soon</span><span lang="zh">即将上线</span></span><span class="pill" aria-disabled="true"><span lang="en">Soon</span><span lang="zh">敬请期待</span></span></div>
+    </div>
+   </article>
+   <!-- WORK 03: replace with the third site -->
+   <article class="work tbd rv" data-s="soon">
+    <div class="shot"><img src="assets/tbd-placeholder.svg" alt="Third project placeholder" width="1200" height="750" loading="lazy"></div>
+    <div class="body">
+     <span class="num">03</span>
+     <h3><span lang="en">Project 03</span><span lang="zh">作品 03</span></h3>
+     <p><span lang="en">[Placeholder] The third website goes here — name, one-liner and link to be added.</span><span lang="zh">【占位】第三个网站，名称、简介和链接待补充。</span></p>
+     <div class="chips"><span class="chip">TBD</span></div>
+     <div class="act"><span class="status"><span class="dot hollow"></span>TBD</span><span class="pill" aria-disabled="true"><span lang="en">Visit</span><span lang="zh">访问</span></span></div>
+    </div>
+   </article>
+  </div>
+ </section>
+
+ <section id="now">
+  <h2 class="h2 grad center rv"><span lang="en">Currently building</span><span lang="zh">Currently building</span></h2>
+  <ol class="list">
+   <li class="rv"><span class="n">1</span><span class="m">Tessera<small lang="en">Polishing the TOEFL study flow before launch</small><small lang="zh">上线前打磨托福学习流程</small></span><span class="a">↓</span></li>
+   <li class="rv on"><span class="n">2</span><span class="m">DevToolPick<small lang="en">New reviews, news and interactive tools every week</small><small lang="zh">每周更新测评、新闻和互动工具</small></span><span class="a">→</span></li>
+   <li class="rv"><span class="n">3</span><span class="m"><span lang="en">Project 03</span><span lang="zh">作品 03</span><small lang="en">Coming next</small><small lang="zh">下一个项目</small></span><span class="a">↓</span></li>
+   <li class="rv"><span class="n">4</span><span class="m"><span lang="en">This portfolio</span><span lang="zh">这个作品集</span><small lang="en">Monochrome, static, fast</small><small lang="zh">黑白极简、纯静态、快</small></span><span class="a">↓</span></li>
+  </ol>
+ </section>
+</main>
+</div>
+
+<footer id="contact">
+ <div class="pills small up" style="justify-content:space-around;color:#888;margin-bottom:20px"><span>GitHub</span><span>X</span><span>Email</span><span>Tokyo</span></div>
+ <h2 class="rv">Let's talk</h2>
+ <div class="pills">
+  <a class="pill" href="https://github.com/rtj0352-maker" target="_blank" rel="noopener">GitHub</a>
+  <!-- X: replace href with https://x.com/<handle> -->
+  <a class="pill" href="https://x.com/" target="_blank" rel="noopener">X</a>
+  <a class="pill" href="mailto:rtj0352@gmail.com">rtj0352@gmail.com</a>
+ </div>
+ <div class="bot"><span>© 2026 呂 東瑞 Lyu DongRui</span><span>Tokyo · Static · Monochrome</span></div>
+</footer>
+
+<script>
+document.body.classList.remove('no-js');
+const h=document.documentElement,saved=localStorage.getItem('lang')||(navigator.language||'').startsWith('zh')&&'zh-CN';
+if(saved)h.lang=saved;
+document.getElementById('lang').onclick=()=>{h.lang=h.lang==='en'?'zh-CN':'en';localStorage.setItem('lang',h.lang)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;document.querySelectorAll('.work').forEach(w=>w.classList.toggle('hide',f!=='all'&&w.dataset.s!==f))});
+document.querySelectorAll('.list li').forEach(li=>li.onmouseenter=()=>{document.querySelectorAll('.list li').forEach(x=>x.classList.toggle('on',x===li))});
+</script>
+</body>
+</html>
