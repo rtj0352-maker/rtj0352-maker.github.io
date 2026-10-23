@@ -3,211 +3,133 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TJ — Lyu DongRui</title>
+<title>TJ — Lyu DongRui, Independent Builder</title>
 <meta name="description" content="TJ (呂 東瑞 / Lyu DongRui) — independent builder in Tokyo making small, useful, multilingual websites.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#fafafa">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/intertight.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:Inter;src:url(assets/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
-:root{--bg:#fff;--soft:#fafafa;--ink:#0a0a0a;--g1:#525252;--g2:#737373;--line:#ebebeb;--r:18px;--ease:cubic-bezier(.16,1,.3,1);--w:1120px}
+@font-face{font-family:"Inter Tight";src:url(assets/intertight.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{--bg:#fafafa;--ink:#111;--g:#6e6e6e;--line:#e4e4e4;--pad:clamp(16px,1.6vw,24px);--ease:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Inter,"PingFang SC","Hiragino Sans","Noto Sans CJK SC",system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+body{background:var(--bg);color:var(--ink);font:500 10.5px/1.35 "Inter Tight","PingFang SC","Hiragino Sans","Noto Sans CJK SC",Arial,sans-serif;-webkit-font-smoothing:antialiased;text-transform:uppercase;letter-spacing:.01em}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
-/* nav */
-.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
-.nav.s{border-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:600;font-size:17px;letter-spacing:-.03em}
-.links{display:flex;gap:28px;font-size:14px;color:var(--g1)}
-.links a:hover,.lang:hover{color:var(--ink)}
-.lang{font-size:13px;color:var(--g1);border:1px solid var(--line);border-radius:999px;padding:6px 12px;transition:border-color .2s,color .2s}
-.lang:hover{border-color:#d4d4d4}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-transform:inherit;letter-spacing:inherit}
+.page{padding:0 var(--pad)}
+.grid{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--pad)}
+.right{grid-column:2}
+/* top */
+.top{display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 0;align-items:start}
+.top .c{text-align:center}.top .r{text-align:right;display:flex;justify-content:flex-end;gap:14px}
+.hl{position:relative}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+.hl:hover::after{transform:scaleX(1);transform-origin:left}
+#lang{color:var(--g)}#lang:hover{color:var(--ink)}
 /* hero */
-.hero{text-align:center;padding:clamp(96px,14vw,176px) 0 clamp(80px,10vw,128px)}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--g1);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 10px;background:var(--soft)}
-.eyebrow i{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
-.hero h1{font-size:clamp(96px,18vw,240px);font-weight:600;letter-spacing:-.065em;line-height:.9;margin:28px 0 20px}
-.hero .name{font-size:15px;color:var(--g2);letter-spacing:.02em;margin-bottom:28px}
-.hero p.lead{font-size:clamp(20px,2.2vw,24px);line-height:1.45;color:var(--g1);letter-spacing:-.015em;max-width:28em;margin:0 auto;text-wrap:balance}
-.hero p.lead b{color:var(--ink);font-weight:500}
-.cta{display:flex;gap:12px;justify-content:center;margin-top:40px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font-size:15px;font-weight:500;transition:background .2s,border-color .2s,transform .2s var(--ease)}
-.btn:active{transform:scale(.98)}
-.btn.p{background:var(--ink);color:#fff}.btn.p:hover{background:#2a2a2a}
-.btn.s{border:1px solid var(--line);background:#fff}.btn.s:hover{border-color:#cfcfcf;background:var(--soft)}
-.btn .ar{transition:transform .25s var(--ease)}.btn:hover .ar{transform:translateX(3px)}
-/* section */
-section.sec{padding:clamp(72px,9vw,120px) 0;border-top:1px solid var(--line)}
-.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
-.kick{font-size:13px;color:var(--g2);margin-bottom:10px;font-weight:500}
-h2{text-wrap:balance;font-size:clamp(32px,4.2vw,48px);font-weight:600;letter-spacing:-.04em;line-height:1.05}
-.sh p{color:var(--g1);max-width:26em;font-size:15px}
-/* cards */
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow .4s var(--ease),transform .4s var(--ease),border-color .3s}
-.card:hover{box-shadow:0 1px 2px rgba(0,0,0,.04),0 16px 40px -12px rgba(0,0,0,.12);transform:translateY(-3px);border-color:#e2e2e2}
-.card.feat{grid-column:1/-1;flex-direction:row}
-.card.feat .media{flex:1.35;aspect-ratio:auto;border-right:1px solid var(--line);border-bottom:0}
-.card.feat .body{flex:1;padding:40px}
-.media{aspect-ratio:16/10;background:var(--soft);border-bottom:1px solid var(--line);overflow:hidden;position:relative}
-.media img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .8s var(--ease)}
-.card:hover .media img{transform:scale(1.025)}
-.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:linear-gradient(180deg,#fafafa,#f2f2f2)}
-.ph strong{display:block;font-size:clamp(36px,4vw,52px);font-weight:600;letter-spacing:-.05em}
-.ph span{font-size:13px;color:var(--g2)}
-.ph.empty strong{color:#c4c4c4}
-.body{padding:28px;display:flex;flex-direction:column;gap:14px;flex:1}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.card h3{font-size:24px;font-weight:600;letter-spacing:-.03em}
-.card.feat h3{font-size:32px}
-.card p{color:var(--g1);font-size:15px}
-.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--g1);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
-.status i{width:6px;height:6px;border-radius:50%;background:#a3a3a3}
-.status.live i{background:#22c55e}
-.tags{display:flex;gap:6px;flex-wrap:wrap}
-.tags span{font-size:12px;color:var(--g1);background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-.go{margin-top:auto;padding-top:8px;font-size:14px;font-weight:500;display:inline-flex;gap:6px;align-items:center}
-.go.off{color:var(--g2)}
-.card:hover .go .ar{transform:translate(2px,-2px)}.go .ar{transition:transform .25s var(--ease)}
-/* about */
-.about{display:grid;grid-template-columns:1fr 1.4fr;gap:64px}
-.about .big{font-size:clamp(22px,2.3vw,28px);line-height:1.4;letter-spacing:-.02em;font-weight:500}
-.about .big span{color:var(--g2)}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.facts div{padding:22px 24px;border-right:1px solid var(--line)}
-.facts div:last-child{border-right:0}
-.facts b{display:block;font-size:22px;font-weight:600;letter-spacing:-.03em}
-.facts small{font-size:13px;color:var(--g2)}
-/* now */
-.now{list-style:none;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.now li{display:grid;grid-template-columns:200px 1fr auto;gap:24px;padding:22px 28px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
-.now li:last-child{border-bottom:0}
-.now li:hover{background:var(--soft)}
-.now strong{font-weight:600;letter-spacing:-.02em}
-.now p{color:var(--g1);font-size:15px}
-.now em{font-style:normal;font-size:13px;color:var(--g2)}
-/* contact */
-.contact{text-align:center}
-.contact h2{font-size:clamp(40px,6vw,72px)}
-.contact p{color:var(--g1);margin:16px auto 0;max-width:28em}
-footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--g2)}
-footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.big{font-weight:600;font-size:clamp(44px,6.1vw,100px);line-height:.86;letter-spacing:-.04em}
+.big .ln{display:block;overflow:hidden;padding-bottom:.035em}
+.big .ln>span{display:block}
+.hero{padding-top:clamp(80px,11vw,170px)}
+.about{padding:clamp(56px,7vw,110px) 0 clamp(64px,7vw,110px);align-items:start}
+.about p.copy{text-transform:none;font-size:12px;line-height:1.3;max-width:23em;letter-spacing:0;padding-left:.35em}
+.rule{height:1px;background:var(--line)}
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--pad);padding-top:10px}
+.work a,.work div.w{display:block}
+.img{display:block;aspect-ratio:1.44;overflow:hidden;background:#e9e9e9;position:relative}
+.img img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;filter:grayscale(1) contrast(1.05);transition:filter .6s var(--ease),transform 1s var(--ease)}
+.work a:hover img{filter:none;transform:scale(1.02)}
+.ph{position:absolute;inset:0;display:grid;place-items:center;background:#ececec}
+.ph b{font-weight:650;font-size:clamp(26px,3vw,46px);letter-spacing:-.045em;color:#cdcdcd}
+.cap{display:block;margin-top:7px}
+.cap span.s{color:var(--g)}
+/* reach */
+.reach{padding:clamp(80px,9vw,140px) 0 clamp(80px,9vw,150px);align-items:start}
+.reach .big a{display:inline-block;transition:color .35s}
+.reach .big:hover a{color:#bdbdbd}.reach .big a:hover{color:var(--ink)}
+.foot{display:flex;justify-content:space-between;padding:12px 0}
 /* reveal */
-.js .rv{opacity:0;transform:translateY(16px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.js .rv.in{opacity:1;transform:none}
+.js .big .ln>span{transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.js .big.in .ln>span{transform:none}
+.js .big.in .ln:nth-child(2)>span{transition-delay:.06s}.js .big.in .ln:nth-child(3)>span{transition-delay:.12s}.js .big.in .ln:nth-child(4)>span{transition-delay:.18s}
+.js .fd{opacity:0;transition:opacity 1s var(--ease) .25s}.js .fd.in{opacity:1}
 html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
-html[lang=zh-CN] h2,html[lang=zh-CN] .about .big{letter-spacing:-.01em}
-@media (max-width:820px){
- .links{display:none}
- .cards{grid-template-columns:1fr}
- .card.feat{flex-direction:column}.card.feat .media{aspect-ratio:16/10;border-right:0;border-bottom:1px solid var(--line)}.card.feat .body{padding:28px}.card.feat h3{font-size:26px}
- .about{grid-template-columns:1fr;gap:24px}
- .facts{grid-template-columns:1fr 1fr 1fr}.facts div{padding:16px}.facts b{font-size:18px}
- .now li{grid-template-columns:1fr auto;gap:4px 16px;padding:18px 20px}.now p{grid-column:1/-1;grid-row:2}
- .sh{margin-bottom:32px}
- .facts b{white-space:nowrap}
- .contact .cta .btn.p{flex-basis:100%;justify-content:center;max-width:320px}
- .contact .cta{justify-content:center}.contact .cta .btn.s{flex:1;max-width:154px;justify-content:center}
+html[lang=zh-CN] .copy{font-size:13px;line-height:1.6}
+@media (max-width:760px){
+ body{font-size:10px}
+ .top{grid-template-columns:auto 1fr auto;gap:10px}
+ .grid{grid-template-columns:1fr}.right{grid-column:1}
+ .big{font-size:clamp(40px,13.4vw,72px)}
+ .hero{padding-top:96px}
+ .about{row-gap:14px;padding:48px 0 56px}.about p.copy{padding-left:0;font-size:13px}
+ .work{grid-template-columns:1fr;row-gap:22px}
+ .reach{row-gap:18px;padding:72px 0 88px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.js .big .ln>span{transform:none}.js .fd{opacity:1}}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap">
- <a class="logo" href="#top" aria-label="TJ home">TJ</a>
- <nav class="links" aria-label="Sections"><a href="#work"><span lang="en">Work</span><span lang="zh">作品</span></a><a href="#about"><span lang="en">About</span><span lang="zh">关于</span></a><a href="#now"><span lang="en">Now</span><span lang="zh">近况</span></a><a href="#contact"><span lang="en">Contact</span><span lang="zh">联系</span></a></nav>
- <button class="lang" id="lang" type="button">EN · 中文</button>
-</div></header>
+<div class="page">
+<header class="top">
+ <a href="#top" class="hl" style="justify-self:start">TJ</a>
+ <div class="c"><span lang="en">Reach out</span><span lang="zh">联系</span><br><a class="hl" href="mailto:rtj0352@gmail.com">rtj0352@gmail.com</a></div>
+ <div class="r"><button id="lang" type="button" class="hl">EN / 中文</button><span><span lang="en">Tokyo</span><span lang="zh">东京</span> [ <span id="clock">--:--</span> ]</span></div>
+</header>
 
 <main id="top">
- <section class="hero wrap">
-  <span class="eyebrow rv"><i aria-hidden="true"></i><span lang="en">Building TESSERA · Tokyo</span><span lang="zh">正在打造 TESSERA · 东京</span></span>
-  <h1 class="rv">TJ</h1>
-  <p class="name rv">呂 東瑞 · Lyu DongRui</p>
-  <p class="lead rv"><span lang="en">Independent builder. I design and ship <b>small, useful, multilingual websites</b> — from first sketch to launch.</span><span lang="zh">独立开发者。我设计并上线<b>小而有用的多语言网站</b>，从第一张草图到正式发布。</span></p>
-  <div class="cta rv">
-   <a class="btn p" href="#work"><span lang="en">View work</span><span lang="zh">查看作品</span> <span class="ar" aria-hidden="true">→</span></a>
-   <a class="btn s" href="mailto:rtj0352@gmail.com"><span lang="en">Get in touch</span><span lang="zh">联系我</span></a>
+ <section class="grid hero">
+  <h1 class="big right" aria-label="TJ, Lyu DongRui, Independent Builder">
+   <span class="ln"><span>TJ</span></span>
+   <span class="ln"><span>Lyu DongRui</span></span>
+   <span class="ln"><span lang="en">Independent</span><span lang="zh">独立开发者</span></span>
+   <span class="ln"><span lang="en">Builder</span><span lang="zh">呂 東瑞</span></span>
+  </h1>
+ </section>
+
+ <section class="grid about">
+  <div class="fd">[ <span lang="en">About</span><span lang="zh">关于</span> ]</div>
+  <!-- BIO: edit -->
+  <p class="copy right fd"><span lang="en">TJ designs and ships small, useful, multilingual websites on his own — from first sketch to launch, in Chinese, English and Japanese. Based in Tokyo.</span><span lang="zh">TJ 独立设计并上线小而有用的多语言网站，从第一张草图到正式发布，使用中文、英文和日文。现居东京。</span></p>
+ </section>
+
+ <div class="rule"></div>
+
+ <section class="work" aria-label="Work">
+  <a href="https://rtj0352-maker.github.io/devtoolpick/" target="_blank" rel="noopener" class="fd">
+   <span class="img"><img src="assets/devtoolpick.jpg" alt="DevToolPick homepage" width="1200" height="750" loading="lazy"></span>
+   <span class="cap"><span class="hl">[ DevToolPick ]</span> <span class="s">— <span lang="en">Live</span><span lang="zh">已上线</span></span></span>
+  </a>
+  <div class="w fd">
+   <span class="img"><span class="ph"><b>Tessera</b></span></span>
+   <span class="cap">[ Tessera — <span lang="en">Soon</span><span lang="zh">即将上线</span> ]</span>
+  </div>
+  <!-- WORK 03: replace with the third site (make it an <a>) -->
+  <div class="w fd">
+   <span class="img"><span class="ph"><b>03</b></span></span>
+   <span class="cap">[ 03 — TBD ]</span>
   </div>
  </section>
 
- <section class="sec" id="work"><div class="wrap">
-  <div class="sh rv"><div><div class="kick"><span lang="en">Selected work</span><span lang="zh">精选作品</span></div><h2><span lang="en">Things I've built.</span><span lang="zh">我做过的东西。</span></h2></div><p><span lang="en">Three projects — one live, two on the way.</span><span lang="zh">三个项目：一个已上线，两个在路上。</span></p></div>
-  <div class="cards">
-   <a class="card feat rv" href="https://rtj0352-maker.github.io/devtoolpick/" target="_blank" rel="noopener">
-    <div class="media"><img src="assets/devtoolpick.jpg" alt="DevToolPick homepage" width="1200" height="750" loading="lazy"></div>
-    <div class="body">
-     <div class="top"><span class="status live"><i></i><span lang="en">Live</span><span lang="zh">已上线</span></span><span class="tags"><span>2026</span></span></div>
-     <h3>DevToolPick</h3>
-     <p><span lang="en">A bilingual review site for AI coding tools, with a recommendation quiz, comparison filter, pricing calculator and tech news.</span><span lang="zh">英日双语的 AI 编程工具测评站，带推荐测验、对比筛选、价格计算器和技术新闻。</span></p>
-     <div class="tags"><span>Astro</span><span>GitHub Pages</span><span>EN + JA</span><span>SEO</span></div>
-     <span class="go"><span lang="en">Visit site</span><span lang="zh">访问网站</span> <span class="ar" aria-hidden="true">↗</span></span>
-    </div>
-   </a>
-   <article class="card rv">
-    <div class="media"><div class="ph"><div><strong>Tessera</strong><span lang="en">TOEFL prep · Coming soon</span><span lang="zh">托福备考 · 即将上线</span></div></div></div>
-    <div class="body">
-     <div class="top"><h3>Tessera</h3><span class="status"><i></i><span lang="en">Coming soon</span><span lang="zh">即将上线</span></span></div>
-     <p><span lang="en">A focused TOEFL preparation site with a calm, structured study flow.</span><span lang="zh">专注的托福备考网站，节奏清晰、安静的学习流程。</span></p>
-     <div class="tags"><span>Web app</span><span>Education</span></div>
-     <span class="go off"><span lang="en">In development</span><span lang="zh">开发中</span></span>
-    </div>
-   </article>
-   <!-- WORK 03: replace with the third site -->
-   <article class="card rv">
-    <div class="media"><div class="ph empty"><div><strong>03</strong><span lang="en">To be announced</span><span lang="zh">敬请期待</span></div></div></div>
-    <div class="body">
-     <div class="top"><h3><span lang="en">Project 03</span><span lang="zh">作品 03</span></h3><span class="status"><i></i>TBD</span></div>
-     <p><span lang="en">Third project — details coming soon.</span><span lang="zh">第三个项目，详情即将公布。</span></p>
-     <div class="tags"><span>TBD</span></div>
-     <span class="go off"><span lang="en">Coming soon</span><span lang="zh">即将公布</span></span>
-    </div>
-   </article>
-  </div>
- </div></section>
-
- <section class="sec" id="about"><div class="wrap about">
-  <div class="rv"><div class="kick"><span lang="en">About</span><span lang="zh">关于</span></div><h2><span lang="en">Hi, I'm TJ.</span><span lang="zh">你好，我是 TJ。</span></h2></div>
-  <div class="rv">
-   <!-- BIO: edit -->
-   <p class="big"><span lang="en">I build websites on my own, end to end — design, writing, code and launch. <span>I like products that are quiet, fast and genuinely useful, and I work in Chinese, English and Japanese.</span></span><span lang="zh">我独立完成网站的全部环节：设计、写作、开发与上线。<span>我喜欢安静、快速、真正有用的产品，日常使用中文、英文和日文。</span></span></p>
-   <div class="facts"><div><b>3</b><small lang="en">Projects</small><small lang="zh">个项目</small></div><div><b>中·EN·日</b><small lang="en">Languages</small><small lang="zh">语言</small></div><div><b>2026</b><small lang="en">Since</small><small lang="zh">开始</small></div></div>
-  </div>
- </div></section>
-
- <section class="sec" id="now"><div class="wrap">
-  <div class="sh rv"><div><div class="kick"><span lang="en">Now</span><span lang="zh">近况</span></div><h2><span lang="en">What I'm working on.</span><span lang="zh">最近在做的事。</span></h2></div><p>Oct 2026</p></div>
-  <ul class="now rv">
-   <li><strong>Tessera</strong><p lang="en">Refining the TOEFL study flow before launch.</p><p lang="zh">上线前打磨托福学习流程。</p><em lang="en">In progress</em><em lang="zh">进行中</em></li>
-   <li><strong>DevToolPick</strong><p lang="en">New reviews, news and interactive tools every week.</p><p lang="zh">每周更新测评、新闻与互动工具。</p><em lang="en">Ongoing</em><em lang="zh">持续</em></li>
-   <li><strong lang="en">Project 03</strong><strong lang="zh">作品 03</strong><p lang="en">Sketching the next idea.</p><p lang="zh">构思下一个想法。</p><em lang="en">Next</em><em lang="zh">下一步</em></li>
-  </ul>
- </div></section>
-
- <section class="sec contact" id="contact"><div class="wrap">
-  <div class="kick rv"><span lang="en">Contact</span><span lang="zh">联系</span></div>
-  <h2 class="rv"><span lang="en">Let's build something.</span><span lang="zh">一起做点什么吧。</span></h2>
-  <p class="rv"><span lang="en">Open to ideas, collaborations or just a hello.</span><span lang="zh">欢迎交流想法、合作，或者只是打个招呼。</span></p>
-  <div class="cta rv">
-   <a class="btn p" href="mailto:rtj0352@gmail.com">rtj0352@gmail.com</a>
-   <a class="btn s" href="https://github.com/rtj0352-maker" target="_blank" rel="noopener">GitHub <span class="ar" aria-hidden="true">↗</span></a>
+ <section class="grid reach" id="contact">
+  <div class="fd">[ <span lang="en">Reach out</span><span lang="zh">联系</span> ]</div>
+  <div class="big right">
+   <span class="ln"><span><a href="mailto:rtj0352@gmail.com">Email</a></span></span>
+   <span class="ln"><span><a href="https://github.com/rtj0352-maker" target="_blank" rel="noopener">GitHub</a></span></span>
    <!-- X: set your handle -->
-   <a class="btn s" href="https://x.com/" target="_blank" rel="noopener">X <span class="ar" aria-hidden="true">↗</span></a>
+   <span class="ln"><span><a href="https://x.com/" target="_blank" rel="noopener">X</a></span></span>
   </div>
- </div></section>
+ </section>
 </main>
-<footer><div class="wrap"><span>© 2026 TJ · 呂 東瑞</span><span lang="en">Tokyo, Japan</span><span lang="zh">日本 东京</span></div></footer>
+
+<footer class="foot"><span>TJ ’26</span><span lang="en">All rights reserved</span><span lang="zh">版权所有</span></footer>
+</div>
 <script>
 (()=>{const d=document.documentElement;d.classList.add('js');
 d.lang=localStorage.getItem('lang')||((navigator.language||'').startsWith('zh')?'zh-CN':'en');
 document.getElementById('lang').onclick=()=>{d.lang=d.lang==='en'?'zh-CN':'en';localStorage.setItem('lang',d.lang)};
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.rv').forEach((el,i)=>{const p=el.parentElement;const k=[...p.children].filter(c=>c.classList.contains('rv')).indexOf(el);el.style.transitionDelay=Math.min(k,4)*80+'ms';io.observe(el)});
-const n=document.querySelector('.nav');addEventListener('scroll',()=>n.classList.toggle('s',scrollY>8),{passive:true});
+const f=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',hour:'numeric',minute:'2-digit'}),c=document.getElementById('clock'),t=()=>c.textContent=f.format(new Date());t();setInterval(t,15000);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.big,.fd').forEach(el=>io.observe(el));
 })();
 </script>
 </body>
