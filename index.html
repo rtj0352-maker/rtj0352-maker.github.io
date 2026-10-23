@@ -26,8 +26,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-t
 .hl:hover::after{transform:scaleX(1);transform-origin:left}
 #lang{color:var(--g)}#lang:hover{color:var(--ink)}
 /* hero */
-.big{font-weight:600;font-size:clamp(44px,6.1vw,100px);line-height:.86;letter-spacing:-.04em}
-.big .ln{display:block;overflow:hidden;padding-bottom:.035em}
+.big{font-weight:600;font-size:clamp(44px,6.1vw,100px);line-height:1.08;letter-spacing:-.02em}
+.hero .big{text-transform:none}
+.big .tj{font-size:2em;font-weight:700;line-height:.92;letter-spacing:-.03em;margin-bottom:.12em}
+.big .sub{font-size:.82em;font-weight:450;line-height:1.2;letter-spacing:-.01em}
+.big .sub.g{color:var(--g)}
+.big .cj{font-size:.62em;font-weight:400;color:var(--g);letter-spacing:.08em;margin-left:.3em;vertical-align:.18em}
+.big .ln{display:block;overflow:hidden;padding-bottom:.04em}
 .big .ln>span{display:block}
 .hero{padding-top:clamp(80px,11vw,170px)}
 .about{padding:clamp(56px,7vw,110px) 0 clamp(64px,7vw,110px);align-items:start}
@@ -59,7 +64,8 @@ html[lang=zh-CN] .copy{font-size:13px;line-height:1.6}
  body{font-size:10px}
  .top{grid-template-columns:auto 1fr auto;gap:10px}
  .grid{grid-template-columns:1fr}.right{grid-column:1}
- .big{font-size:clamp(40px,13.4vw,72px)}
+ .big{font-size:clamp(36px,11vw,64px)}
+ .big .sub{font-size:.75em}.big .tj{font-size:1.8em}
  .hero{padding-top:96px}
  .about{row-gap:14px;padding:48px 0 56px}.about p.copy{padding-left:0;font-size:13px}
  .work{grid-template-columns:1fr;row-gap:22px}
@@ -79,10 +85,9 @@ html[lang=zh-CN] .copy{font-size:13px;line-height:1.6}
 <main id="top">
  <section class="grid hero">
   <h1 class="big right" aria-label="TJ, Lyu DongRui, Independent Builder">
-   <span class="ln"><span>TJ</span></span>
-   <span class="ln"><span>Lyu DongRui</span></span>
-   <span class="ln"><span lang="en">Independent</span><span lang="zh">独立开发者</span></span>
-   <span class="ln"><span lang="en">Builder</span><span lang="zh">呂 東瑞</span></span>
+   <span class="ln tj"><span>TJ</span></span>
+   <span class="ln sub"><span>Lyu DongRui <span class="cj">呂 東瑞</span></span></span>
+   <span class="ln sub g"><span lang="en">Independent builder</span><span lang="zh">独立开发者</span></span>
   </h1>
  </section>
 
