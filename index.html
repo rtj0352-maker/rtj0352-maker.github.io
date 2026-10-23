@@ -39,6 +39,16 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 .hero-right{padding-top:90px;text-align:right;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
 .hero-right p{max-width:240px;font-size:13px}
 .hero-right ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px;font-size:13px}
+.mono{filter:none;perspective:900px;aspect-ratio:5/6}
+.tj{width:100%;height:100%;display:block;overflow:visible;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.tstroke{stroke-dasharray:1;stroke-dashoffset:0}
+.js .tstroke{animation:draw 2.4s cubic-bezier(.6,.1,.2,1) .2s both}
+.t2{animation:none!important;stroke-dasharray:.02 .03}
+.jfill{animation:jin 1.4s ease-out both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes jin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sweep{animation:sweep 6s ease-in-out 1.6s infinite}
+@keyframes sweep{0%{transform:skewX(-20deg) translateX(0)}45%,100%{transform:skewX(-20deg) translateX(760px)}}
 /* sections */
 section{padding:72px 0}
 .h2{font-weight:300;font-size:clamp(40px,7vw,88px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
@@ -133,10 +143,20 @@ html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
     <span class="small up">呂 東瑞 · <span lang="en">Builder est.2026</span><span lang="zh">独立开发 · 2026 起</span></span>
     <a class="circ" href="#projects" aria-label="See projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 8v10H8"/></svg></a>
    </div>
-   <!-- PORTRAIT: replace assets/portrait-placeholder.svg with a cut-out B&W PNG (transparent bg), e.g. assets/portrait.png -->
-   <div class="portrait rv">
-    <img src="assets/portrait-placeholder.svg" alt="Portrait of Lyu DongRui (placeholder)" width="400" height="480">
-    <span class="tag">PHOTO PLACEHOLDER</span>
+   <div class="portrait mono rv" aria-label="TJ monogram" role="img">
+    <svg class="tj" viewBox="0 0 400 480" aria-hidden="true">
+     <defs>
+      <linearGradient id="jg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3a3a"/><stop offset=".5" stop-color="#0a0a0a"/><stop offset="1" stop-color="#555"/></linearGradient>
+      <linearGradient id="sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .22 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+      <clipPath id="jc"><path id="jp" d="M232 60h96v250c0 80-48 130-128 130s-130-46-134-124h92c4 30 18 44 42 44s32-16 32-50z"/></clipPath>
+     </defs>
+     <path class="jfill" d="M232 60h96v250c0 80-48 130-128 130s-130-46-134-124h92c4 30 18 44 42 44s32-16 32-50z" fill="url(#jg)"/>
+     <path d="M232 60h96v250c0 80-48 130-128 130s-130-46-134-124h92c4 30 18 44 42 44s32-16 32-50z" filter="url(#gr)" fill="#000"/>
+     <g clip-path="url(#jc)"><rect class="sweep" x="-200" y="0" width="160" height="480" fill="url(#sw)" transform="skewX(-20)"/></g>
+     <path class="tstroke" pathLength="1" d="M30 40h300v84H226v316h-96V124H30z" fill="none" stroke="#0a0a0a" stroke-width="3" stroke-linejoin="miter"/>
+     <path class="tstroke t2" pathLength="1" d="M30 40h300v84H226v316h-96V124H30z" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray=".02 .03" opacity=".9" clip-path="url(#jc)"/>
+    </svg>
    </div>
    <div class="hero-right rv">
     <p class="up"><span lang="en">I design and ship independent websites — content, tools and learning products.</span><span lang="zh">我独立设计并上线网站：内容站、工具和学习产品。</span></p>
@@ -233,7 +253,9 @@ html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
 </footer>
 
 <script>
-document.body.classList.remove('no-js');
+document.body.classList.remove('no-js');document.body.classList.add('js');
+const tj=document.querySelector('.tj'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(tj&&!rm&&matchMedia('(pointer:fine)').matches)addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;tj.style.transform=`rotateY(${x*16}deg) rotateX(${-y*12}deg)`},{passive:true});
 const h=document.documentElement,saved=localStorage.getItem('lang')||(navigator.language||'').startsWith('zh')&&'zh-CN';
 if(saved)h.lang=saved;
 document.getElementById('lang').onclick=()=>{h.lang=h.lang==='en'?'zh-CN':'en';localStorage.setItem('lang',h.lang)};
