@@ -14,7 +14,7 @@ html{scroll-behavior:smooth}
 body{font-family:"Helvetica Neue",Helvetica,Arial,"PingFang SC","Noto Sans CJK SC","Hiragino Sans",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-.sheet{background:var(--card);max-width:1240px;margin:24px auto 0;border-radius:4px}
+.sheet{background:rgba(255,255,255,.94);max-width:1240px;margin:24px auto 0;border-radius:4px}
 .up{text-transform:uppercase;letter-spacing:.06em}
 .small{font-size:12px}
 .grad{background:linear-gradient(90deg,#9a9a9a 0%,#0a0a0a 30%,#0a0a0a 65%,#8a8a8a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -41,12 +41,25 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;pa
 .hero-right p{max-width:240px;font-size:13px}
 .hero-right ul{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px;font-size:13px}
 @font-face{font-family:TJ;src:url(assets/tj.woff2) format("woff2");font-weight:800;font-stretch:125%;font-display:block}
-.mono{filter:none;aspect-ratio:auto;container-type:inline-size;perspective:900px;display:flex;justify-content:center;align-items:center;padding:6% 0}
-.tj{display:flex;gap:.04em;font-family:TJ,"Arial Black",sans-serif;font-weight:800;font-stretch:125%;font-size:min(56cqw,240px);line-height:.8;transition:transform .6s cubic-bezier(.2,.7,.2,1);will-change:transform}
-.tj span{display:block;background:linear-gradient(170deg,#0a0a0a 35%,#8c8c8c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em 0}
-.js .tj span{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
-.js .tj span+span{animation-delay:.14s}
-@keyframes rise{from{opacity:0;transform:translateY(.25em)}to{opacity:1;transform:none}}
+.mono{filter:none;container-type:inline-size;perspective:1000px;padding:2% 0}
+.stage{position:relative;width:100%;aspect-ratio:1;display:grid;place-items:center;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.rings,.badge{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.rings circle{fill:none;stroke:#0a0a0a;stroke-width:.6;opacity:.35}
+.badge{animation:spin 40s linear infinite}
+.badge text{font:500 15px "Helvetica Neue",Arial,sans-serif;letter-spacing:.32em;fill:#0a0a0a}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tj,.ghost{grid-area:1/1;display:flex;gap:.05em;font-family:TJ,"Arial Black",sans-serif;font-weight:800;font-stretch:125%;font-size:34cqw;line-height:.8;position:relative}
+.ghost{color:#000;opacity:.07;filter:blur(6px);transform:translate3d(var(--gx,0),var(--gy,0),-60px) scale(1.06);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tj{transform:translate3d(var(--mx,0),var(--my,0),40px);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.tj span{display:block;padding:.04em 0;color:transparent;-webkit-background-clip:text;background-clip:text;
+background-image:linear-gradient(100deg,#050505 0%,#3d3d3d 18%,#f4f4f4 30%,#5a5a5a 38%,#0d0d0d 50%,#8a8a8a 64%,#ffffff 72%,#2a2a2a 84%,#050505 100%);background-size:250% 100%;background-position:100% 0;
+filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)) drop-shadow(0 10px 14px rgba(0,0,0,.28));animation:sheen 6s ease-in-out infinite;-webkit-box-reflect:below .02em linear-gradient(transparent 62%,rgba(0,0,0,.18))}
+@keyframes sheen{0%{background-position:100% 0}50%{background-position:0% 0}100%{background-position:100% 0}}
+.js .tj span{animation:rise 1.3s cubic-bezier(.2,.7,.2,1) both,sheen 6s ease-in-out 1.3s infinite}
+.js .tj span+span{animation-delay:.16s,1.46s}
+@keyframes rise{from{opacity:0;filter:blur(14px);transform:translateY(.3em)}to{opacity:1;transform:none}}
+.floor{position:absolute;left:22%;right:22%;bottom:14%;height:6%;background:radial-gradient(closest-side,rgba(0,0,0,.28),transparent);filter:blur(4px);transform:translate3d(calc(var(--mx,0)*-.6),0,-20px)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* sections */
 section{padding:72px 0}
 .h2{font-weight:300;font-size:clamp(40px,7vw,88px);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
@@ -141,7 +154,13 @@ html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
     <span class="small up">呂 東瑞 · <span lang="en">Builder est.2026</span><span lang="zh">独立开发 · 2026 起</span></span>
     <a class="circ" href="#projects" aria-label="See projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 6l12 12M18 8v10H8"/></svg></a>
    </div>
-   <div class="portrait mono rv"><div class="tj" role="img" aria-label="TJ"><span aria-hidden="true">T</span><span aria-hidden="true">J</span></div></div>
+   <div class="portrait mono rv"><div class="stage">
+     <svg class="rings" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="196"/><circle cx="200" cy="200" r="150" stroke-dasharray="2 6"/><circle cx="200" cy="200" r="120" opacity=".5"/></svg>
+     <svg class="badge" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="bp" d="M200 200m-174 0a174 174 0 1 1 348 0a174 174 0 1 1-348 0"/></defs><text><textPath href="#bp" textLength="1090">TJ · BUILDER · EST 2026 · TJ · BUILDER · EST 2026 ·</textPath></text></svg>
+     <div class="ghost" aria-hidden="true">TJ</div>
+     <div class="tj" role="img" aria-label="TJ"><span aria-hidden="true">T</span><span aria-hidden="true">J</span></div>
+     <div class="floor" aria-hidden="true"></div>
+    </div></div>
    <div class="hero-right rv">
     <p class="up"><span lang="en">I design and ship independent websites — content, tools and learning products.</span><span lang="zh">我独立设计并上线网站：内容站、工具和学习产品。</span></p>
     <ul class="up">
@@ -238,8 +257,8 @@ html[lang=en] [lang=zh]{display:none}html[lang=zh-CN] [lang=en]{display:none}
 
 <script>
 document.body.classList.remove('no-js');document.body.classList.add('js');
-const tj=document.querySelector('.tj'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(tj&&!rm&&matchMedia('(pointer:fine)').matches)addEventListener('pointermove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;tj.style.transform=`rotateY(${x*16}deg) rotateX(${-y*12}deg)`},{passive:true});
+const st=document.querySelector('.stage'),rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(st&&!rm&&matchMedia('(pointer:fine)').matches){let raf;addEventListener('pointermove',e=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{const r=st.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/innerWidth,y=(e.clientY-(r.top+r.height/2))/innerHeight;st.style.transform=`rotateY(${x*18}deg) rotateX(${-y*14}deg)`;st.style.setProperty('--mx',x*28+'px');st.style.setProperty('--my',y*22+'px');st.style.setProperty('--gx',x*-36+'px');st.style.setProperty('--gy',y*-28+'px')})},{passive:true})}
 const h=document.documentElement,saved=localStorage.getItem('lang')||(navigator.language||'').startsWith('zh')&&'zh-CN';
 if(saved)h.lang=saved;
 document.getElementById('lang').onclick=()=>{h.lang=h.lang==='en'?'zh-CN':'en';localStorage.setItem('lang',h.lang)};
